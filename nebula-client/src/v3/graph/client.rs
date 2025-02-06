@@ -132,6 +132,10 @@ where
         self.connection.service.signout(self.session_id).await
     }
 
+    pub fn session_id(&self)  -> i64 {
+        self.session_id
+    }
+
     #[allow(clippy::ptr_arg)]
     pub async fn execute(&mut self, stmt: &Vec<u8>) -> Result<ExecutionResponse, ExecuteError> {
         let res = match self.connection.service.execute(self.session_id, stmt).await {
